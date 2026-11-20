@@ -1,0 +1,115 @@
+
+import { Link } from 'wouter';
+import { X, ChevronRight, Home, BookOpen, Stethoscope, MessageCircle, Trophy, FileText, Users, Users2, TrendingUp, Heart, Calculator } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageProvider';
+import { Button } from '@/components/ui/button';
+
+interface MobileMenuProps {
+  isOpen: boolean;
+  onClose: () => void;
+  navItems: Array<{ key: string; href: string }>;
+}
+
+const navIcons: Record<string, { icon: any; color: string; description: string }> = {
+  'Home_Landing_Page.Header.nav_community': { icon: Users2, color: 'from-violet-500 to-purple-600', description: 'Join our community' },
+  'Home_Landing_Page.Header.nav_home': { icon: Home, color: 'from-blue-500 to-blue-600', description: 'Back to main page' },
+  'Home_Landing_Page.Header.nav_knowledge': { icon: BookOpen, color: 'from-purple-500 to-pink-500', description: 'Articles & guides for your journey' },
+  'Home_Landing_Page.Header.nav_treatments': { icon: Stethoscope, color: 'from-teal-500 to-emerald-500', description: 'Medical procedures & options' },
+  'Home_Landing_Page.Header.nav_sakhi': { icon: MessageCircle, color: 'from-pink-500 to-rose-500', description: 'Your personal health companion' },
+  'Home_Landing_Page.Header.nav_success': { icon: Trophy, color: 'from-amber-500 to-orange-500', description: 'Inspiring parent stories' },
+  'Home_Landing_Page.Header.nav_blog': { icon: FileText, color: 'from-indigo-500 to-purple-500', description: 'Latest insights & tips' },
+  'Home_Landing_Page.Header.nav_experts': { icon: Users, color: 'from-cyan-500 to-blue-500', description: 'Meet our specialists' },
+  'Home_Landing_Page.Header.nav_investors': { icon: TrendingUp, color: 'from-green-500 to-emerald-500', description: 'Partner with us' },
+  'Home_Landing_Page.Header.nav_tools': { icon: Calculator, color: 'from-blue-400 to-indigo-500', description: 'Calculators & Trackers' },
+};
+
+const MobileMenu = ({ isOpen, onClose, navItems }: MobileMenuProps) => {
+  const { t } = useLanguage();
+
+  return (
+    <>
+      {/* Backdrop */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[55] transition-opacity duration-300"
+          onClick={onClose}
+          data-testid="backdrop-mobile-menu"
+        />
+      )}
+
+      {/* Menu */}
+      <div className={`mobile-menu fixed inset-y-0 left-0 z-[55] w-[85%] max-w-sm bg-white shadow-2xl ${isOpen ? 'open' : ''}`}>
+        <div className="flex flex-col h-full pt-14 md:pt-16">
+          {/* Header Section */}
+          <div className="px-5 py-4 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 relative border-b border-gray-100">
+            <div className="flex flex-col items-center justify-center">
+              <img
+                src="/new JS logo BR.svg"
+                alt="JanmaSethu Logo"
+                className="h-28 w-auto object-contain scale-x-125 scale-y-110"
+              />
+            </div>
+          </div>
+
+          {/* Navigation Links */}
+          <nav className="flex-1 overflow-y-auto py-3 px-3" role="navigation" aria-label="Mobile navigation">
+            <div className="space-y-1">
+              {navItems.map(({ key, href }, index) => {
+                const navInfo = navIcons[key] || { icon: ChevronRight, color: 'from-gray-500 to-gray-600', description: '' };
+                const Icon = navInfo.icon;
+
+                return (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="group block"
+                    onClick={onClose}
+                    data-testid={`link-mobile-${key.replace('nav_', '')}`}
+                  >
+                    <div
+                      className="flex items-center gap-3 px-3 py-3 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 transition-all duration-200"
+                      style={{
+                        animation: isOpen ? `slideInLeft 0.3s ease-out ${index * 0.05}s forwards` : '',
+                        opacity: isOpen ? 1 : 0,
+                      }}
+                    >
+                      <div className={`p-2.5 rounded-xl bg-gradient-to-r ${navInfo.color} shadow-md group-hover:scale-110 transition-transform duration-200`}>
+                        <Icon className="w-5 h-5 text-white" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <span className="font-semibold text-[15px] text-gray-800 group-hover:text-purple-700 transition-colors block">
+                          {t(key)}
+                        </span>
+                        {navInfo.description && (
+                          <span className="text-xs text-gray-500 block truncate">
+                            {navInfo.description}
+                          </span>
+                        )}
+                      </div>
+                      <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-purple-500 group-hover:translate-x-1 transition-all duration-200 flex-shrink-0" />
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </nav>
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes slideInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+      `}</style>
+    </>
+  );
+};
+
+export default MobileMenu;

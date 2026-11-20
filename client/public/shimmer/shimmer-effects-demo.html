@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Janmasethu Elevated Shimmer Effects Demo</title>
+  <!-- Modern Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Shimmer effects stylesheet -->
+  <link rel="stylesheet" href="shimmer-effects.css">
+
+  <style>
+    :root {
+      --background: hsl(221 83% 97%);
+      --foreground: hsl(220 14% 11%);
+      --card: hsl(0 0% 100%);
+      --card-foreground: hsl(220 14% 11%);
+      --primary: #9333EA;
+      --secondary: #EC4899;
+      --accent: #F97316;
+      --muted: hsl(220 14% 96%);
+      --muted-foreground: hsl(220 9% 46%);
+      --border: hsl(220 13% 91%);
+      --radius: 1.5rem;
+      
+      --font-sans: 'Outfit', sans-serif;
+      --font-display: 'Playfair Display', serif;
+
+      /* Tuning overrides initial values */
+      --breathe-scale: 1.003;
+      --breathe-opacity: 0.85;
+      --sweep-cycle: 3.6s;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--foreground);
+      background: linear-gradient(135deg, #F5F7FF 0%, #FFECEF 100%);
+      min-height: 100vh;
+      padding: 80px 20px 40px 20px;
+    }
+
+    /* Fixed top navigation bar */
+    .demo-navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+    }
+
+    .demo-logo {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .demo-nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted-foreground);
+    }
+
+    /* Split layout: control panel vs previews */
+    .demo-layout {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    @media (min-width: 1024px) {
+      .demo-layout {
+        grid-template-columns: 320px 1fr;
+      }
+    }
+
+    /* Tuning panel floating controls */
+    .control-panel {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(147, 51, 234, 0.2);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      height: fit-content;
+      position: sticky;
+      top: 84px;
+    }
+
+    .control-panel h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+
+    .control-group {
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .control-group label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted-foreground);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .control-group input[type="range"] {
+      width: 100%;
+      accent-color: var(--primary);
+    }
+
+    /* Switch toggle */
+    .switch-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .switch-label {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .switch-btn {
+      position: relative;
+      width: 48px;
+      height: 24px;
+      border-radius: 999px;
+      background: var(--border);
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .switch-btn::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: white;
+      transition: transform 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .switch-btn.active {
+      background: var(--primary);
+    }
+
+    .switch-btn.active::after {
+      transform: translateX(24px);
+    }
+
+    /* Tabs system representing pages */
+    .tabs-nav {
+      display: flex;
+      gap: 8px;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 24px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .tab-btn {
+      padding: 10px 20px;
+      border-radius: 9999px;
+      border: none;
+      background: transparent;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--muted-foreground);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* Side-by-side comparison structure */
+    .preview-card {
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    .preview-header h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .preview-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-action {
+      padding: 6px 12px;
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+      background: white;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-action:hover {
+      background: var(--muted);
+    }
+
+    /* Real components styling mock markup */
+    .mock-card {
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--card);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .mock-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    @media (min-width: 640px) {
+      .mock-grid-2 { grid-template-columns: repeat(2, 1fr); }
+      .mock-grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .mock-grid-4 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+      .mock-grid-3 { grid-template-columns: repeat(3, 1fr); }
+      .mock-grid-4 { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    /* Styles matching real UI blocks */
+    .mock-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .mock-btn {
+      height: 38px;
+      padding: 0 20px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+    }
+
+    .mock-btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+    }
+
+    .mock-btn-outline {
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--foreground);
+    }
+
+    .mock-badge {
+      display: inline-flex;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      align-self: flex-start;
+    }
+
+    /* Page-specific detail elements */
+    .about-stat {
+      text-align: center;
+      padding: 20px;
+    }
+    .about-stat h2 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: var(--secondary);
+      margin-bottom: 4px;
+    }
+
+    .team-avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 12px;
+      align-self: center;
+    }
+  </style>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Top fixed Navbar (progress bar runs below it) -->
+  <nav class="demo-navbar">
+    <a href="#" class="demo-logo">JanmaSethu</a>
+    <div class="demo-nav-links">
+      <span>Calm & Reassuring loading</span>
+    </div>
+  </nav>
+
+  <div class="demo-layout">
+    
+    <!-- 1. Real-time tuning control panel -->
+    <aside class="control-panel">
+      <h3>🎨 Visual Tuner</h3>
+      
+      <div class="switch-row">
+        <span class="switch-label">Slow Network (3s delay)</span>
+        <button id="slow-net-toggle" class="switch-btn"></button>
+      </div>
+
+      <div class="control-group">
+        <label><span>Double Sweep cycle</span><span id="cycle-val">3.6s</span></label>
+        <input type="range" id="cycle-slider" min="1.5" max="6.0" step="0.1" value="3.6">
+      </div>
+
+      <div class="control-group">
+        <label><span>Card Breathing scale</span><span id="scale-val">1.003</span></label>
+        <input type="range" id="scale-slider" min="1.000" max="1.015" step="0.001" value="1.003">
+      </div>
+
+      <div class="control-group">
+        <label><span>Card Breathing opacity</span><span id="opacity-val">0.85</span></label>
+        <input type="range" id="opacity-slider" min="0.5" max="0.95" step="0.05" value="0.85">
+      </div>
+
+      <div class="control-group">
+        <label><span>Stagger section delay</span><span id="section-val">80ms</span></label>
+        <input type="range" id="section-slider" min="20" max="250" step="10" value="80">
+      </div>
+
+      <div class="control-group">
+        <label><span>Stagger card delay</span><span id="card-val">50ms</span></label>
+        <input type="range" id="card-slider" min="10" max="150" step="10" value="50">
+      </div>
+
+      <div class="control-group">
+        <label><span>Content reveal duration</span><span id="reveal-val">350ms</span></label>
+        <input type="range" id="reveal-slider" min="150" max="800" step="50" value="350">
+      </div>
+
+      <button id="reset-page-btn" class="mock-btn mock-btn-primary" style="width: 100%; margin-top: 10px; height: 38px;">
+        Restart Page Loader (R)
+      </button>
+    </aside>
+
+    <!-- 2. Previews and tabs -->
+    <main>
+      <div class="tabs-nav">
+        <button class="tab-btn active" onclick="switchTab('home-tab')">🏠 Home Page</button>
+        <button class="tab-btn" onclick="switchTab('about-tab')">ℹ️ About Us</button>
+        <button class="tab-btn" onclick="switchTab('services-tab')">🏥 Treatments</button>
+        <button class="tab-btn" onclick="switchTab('doctors-tab')">👨‍⚕️ Experts</button>
+        <button class="tab-btn" onclick="switchTab('blog-tab')">📚 Blogs</button>
+        <button class="tab-btn" onclick="switchTab('contact-tab')">📞 Contact Us</button>
+      </div>
+
+      <!-- Tab Content area -->
+      <div class="tabs-container">
+        
+        <!-- PAGE 1: HOME PAGE -->
+        <div id="home-tab" class="tab-content active">
+          
+          <!-- Home Section 1: Dashboard -->
+          <div class="preview-card">
+            <div class="preview-header">
+              <h3>Home: Journey Dashboard</h3>
+              <div class="preview-actions">
+                <button class="btn-action" onclick="loadItem('home-dashboard')">Reveal</button>
+                <button class="btn-action" onclick="resetItem('home-dashboard')">Reset</button>
+              </div>
+            </div>
+            
+            <div id="home-dashboard" class="shimmer-grid-parent" data-shimmer-label="Journey Dashboard">
+              <!-- Skeleton -->
+              <div class="shimmer-stage-skeleton">
+                <div class="skeleton-card" style="padding: 32px; gap: 16px;">
+                  <div class="sk-title-line shimmer w-40"></div>
+                  <div class="sk-paragraph">
+                    <div class="sk-body-line shimmer w-full"></div>
+                    <div class="sk-body-line shimmer w-80"></div>
+                  </div>
+                  <div class="sk-button-pill shimmer" style="width: 150px; margin-top: 8px;"></div>
+                </div>
+              </div>
+              <!-- Content -->
+              <div class="shimmer-stage-content">
+                <div class="mock-card" style="padding: 32px; background: linear-gradient(135deg, #F3E8FF, #FDF2F8);">
+                  <span class="mock-badge" style="background: #9333EA; color: white;">Your Stage: Pre-Conception</span>
+                  <h2 style="font-size: 24px; font-weight: 700; margin-bottom: 8px;">Let's customize your fertility plans</h2>
+                  <p style="color: var(--muted-foreground); margin-bottom: 16px; font-size: 14px;">Select options inside your profile settings to filter calculators, doctors, and treatments.</p>
+                  <button class="mock-btn mock-btn-primary" style="align-self: flex-start;">Open Dashboard</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Home Section 2: Popular Tools -->
+          <div class="preview-card">
+            <div class="preview-header">
+              <h3>Home: Popular Tools</h3>
+              <div class="preview-actions">
+                <button class="btn-action" onclick="loadItem('home-tools')">Reveal</button>
+                <button class="btn-action" onclick="resetItem('home-tools')">Reset</button>
+              </div>
+            </div>
+
+            <div id="home-tools" class="shimmer-grid-parent" data-shimmer-label="Popular Tools">
+              <!-- Skeleton -->
+              <div class="shimmer-stage-skeleton">
+                <div class="sk-title-line shimmer w-30" style="margin-bottom: 24px;"></div>
+                <div class="skeleton-grid-tools">
+                  <div class="tool-item">
+                    <div class="sk-card-image shimmer" style="width: 88px; height: 88px; border-radius: 1.5rem;"></div>
+                    <div class="sk-body-line shimmer w-60" style="margin-top: 16px; height: 15px; align-self: center;"></div>
+                  </div>
+                  <div class="tool-item">
+                    <div class="sk-card-image shimmer" style="width: 88px; height: 88px; border-radius: 1.5rem;"></div>
+                    <div class="sk-body-line shimmer w-70" style="margin-top: 16px; height: 15px; align-self: center;"></div>
+                  </div>
+                  <div class="tool-item">
+                    <div class="sk-card-image shimmer" style="width: 88px; height: 88px; border-radius: 1.5rem;"></div>
+                    <div class="sk-body-line shimmer w-50" style="margin-top: 16px; height: 15px; align-self: center;"></div>
+                  </div>
+                  <div class="tool-item">
+                    <div class="sk-card-image shimmer" style="width: 88px; height: 88px; border-radius: 1.5rem;"></div>
+                    <div class="sk-body-line shimmer w-60" style="margin-top: 16px; height: 15px; align-self: center;"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- Content -->
+              <div class="shimmer-stage-content">
+                <h3 style="margin-bottom: 24px; font-weight: 700;">Popular Tools</h3>
+                <div class="mock-grid mock-grid-4">
+                  <div class="tool-item">
+                    <div class="tool-icon-wrapper" style="border-color: #FECDD3;"><i data-lucide="activity" class="text-pink-600"></i></div>
+                    <div class="tool-name">Ovulation Tracker</div>
+                  </div>
+                  <div class="tool-item">
+                    <div class="tool-icon-wrapper" style="border-color: #FED7AA;"><i data-lucide="calendar" class="text-orange-600"></i></div>
+                    <div class="tool-name">Due Date Calc</div>
+                  </div>
+                  <div class="tool-item">
+                    <div class="tool-icon-wrapper" style="border-color: #99F6E4;"><i data-lucide="clock" class="text-emerald-600"></i></div>
+                    <div class="tool-name">Conception Calc</div>
+                  </div>
+                  <div class="tool-item">
+                    <div class="tool-icon-wrapper" style="border-color: #F5D0FE;"><i data-lucide="baby" class="text-purple-600"></i></div>
+                    <div class="tool-name">Pregnancy Guide</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAGE 2: ABOUT US -->
+        <div id="about-tab" class="tab-content">
+          <div class="preview-card">
+            <div class="preview-header">
+              <h3>About Us: Stats Grid</h3>
+              <div class="preview-actions">
+                <button class="btn-action" onclick="loadItem('about-stats')">Reveal</button>
+                <button class="btn-action" onclick="resetItem('about-stats')">Reset</button>
+              </div>
+            </div>
+            
+            <div id="about-stats" class="shimmer-grid-parent" data-shimmer-label="About Us Stats">
+              <!-- Skeleton -->
+              <div class="shimmer-stage-skeleton">
+                <div class="sk-title-line shimmer w-30" style="margin-bottom: 24px;"></div>
+                <div class="skeleton-grid-cards">
+                  <div class="skeleton-card sk-breath" style="padding: 24px; align-items: center; gap: 8px;">
+                    <div class="sk-title-line h-xl shimmer w-40"></div>
+                    <div class="sk-body-line shimmer w-60"></div>
+                  </div>
+                  <div class="skeleton-card sk-breath" style="padding: 24px; align-items: center; gap: 8px;">
+                    <div class="sk-title-line h-xl shimmer w-50"></div>
+                    <div class="sk-body-line shimmer w-50"></div>
+                  </div>
+                  <div class="skeleton-card sk-breath" style="padding: 24px; align-items: center; gap: 8px;">
+                    <div class="sk-title-line h-xl shimmer w-30"></div>
+                    <div class="sk-body-line shimmer w-70"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- Content -->
+              <div class="shimmer-stage-content">
+                <h3 style="margin-bottom: 24px; font-weight: 700;">Platform Highlights</h3>
+                <div class="mock-grid mock-grid-3">
+                  <div class="mock-card about-stat">
+                    <h2>10k+</h2>
+                    <p style="color: var(--muted-foreground); font-size: 13px;">Successful Journeys</p>
+                  </div>
+                  <div class="mock-card about-stat">
+                    <h2>98%</h2>
+                    <p style="color: var(--muted-foreground); font-size: 13px;">Recommendation Rate</p>
+                  </div>
+                  <div class="mock-card about-stat">
+                    <h2>15+</h2>
+                    <p style="color: var(--muted-foreground); font-size: 13px;">Expert Gynecologists</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAGE 3: TREATMENTS / SERVICES -->
+        <div id="services-tab" class="tab-content">
+          <div class="preview-card">
+            <div class="preview-header">
+              <h3>Treatments / Services</h3>
+              <div class="preview-actions">
+                <button class="btn-action" onclick="loadItem('treatments-grid')">Reveal</button>
+                <button class="btn-action" onclick="resetItem('treatments-grid')">Reset</button>
+              </div>
+            </div>
+
+            <div id="treatments-grid" class="shimmer-grid-parent" data-shimmer-label="Services section">
+              <!-- Skeleton -->
+              <div class="shimmer-stage-skeleton">
+                <div class="sk-title-line shimmer w-40" style="margin-bottom: 24px;"></div>
+                <div class="skeleton-grid-cards">
+                  <div class="skeleton-card sk-breath" style="padding: 24px; gap: 16px;">
+                    <div class="sk-icon shimmer" style="width: 48px; height: 48px; border-radius: 8px;"></div>
+                    <div class="sk-title-line shimmer w-60"></div>
+                    <div class="sk-paragraph">
+                      <div class="sk-body-line shimmer w-full"></div>
+                      <div class="sk-body-line shimmer w-80"></div>
+                    </div>
+                  </div>
+                  <div class="skeleton-card sk-breath" style="padding: 24px; gap: 16px;">
+                    <div class="sk-icon shimmer" style="width: 48px; height: 48px; border-radius: 8px;"></div>
+                    <div class="sk-title-line shimmer w-50"></div>
+                    <div class="sk-paragraph">
+                      <div class="sk-body-line shimmer w-full"></div>
+                      <div class="sk-body-line shimmer w-90"></div>
+                    </div>
+                  </div>
+                  <div class="skeleton-card sk-breath" style="padding: 24px; gap: 16px;">
+                    <div class="sk-icon shimmer" style="width: 48px; height: 48px; border-radius: 8px;"></div>
+                    <div class="sk-title-line shimmer w-70"></div>
+                    <div class="sk-paragraph">
+                      <div class="sk-body-line shimmer w-full"></div>
+                      <div class="sk-body-line shimmer w-75"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Content -->
+              <div class="shimmer-stage-content">
+                <h3 style="margin-bottom: 24px; font-weight: 700;">Treatments & Procedures</h3>
+                <div class="mock-grid mock-grid-3">
+                  <div class="mock-card">
+                    <div class="mock-icon bg-blue-100"><i data-lucide="syringe" class="text-blue-600"></i></div>
+                    <h4 style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">Intrauterine Insemination (IUI)</h4>
+                    <p style="color: var(--muted-foreground); font-size: 13px;">Simple insemination treatment washing and sorting sperm cells.</p>
+                  </div>
+                  <div class="mock-card">
+                    <div class="mock-icon bg-purple-100"><i data-lucide="microscope" class="text-purple-600"></i></div>
+                    <h4 style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">In Vitro Fertilization (IVF)</h4>
+                    <p style="color: var(--muted-foreground); font-size: 13px;">Advanced fertilization techniques inside special embryology labs.</p>
+                  </div>
+                  <div class="mock-card">
+                    <div class="mock-icon bg-green-100"><i data-lucide="dna" class="text-green-600"></i></div>
+                    <h4 style="font-weight: 700; font-size: 16px; margin-bottom: 8px;">ICSI Treatment</h4>
+                    <p style="color: var(--muted-foreground); font-size: 13px;">Single active sperm injected directly into mature eggs.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAGE 4: DOCTORS / EXPERTS -->
+        <div id="doctors-tab" class="tab-content">
+          <div class="preview-card">
+            <div class="preview-header">
+              <h3>Doctors / Specialists</h3>
+              <div class="preview-actions">
+                <button class="btn-action" onclick="loadItem('doctors-grid')">Reveal</button>
+                <button class="btn-action" onclick="resetItem('doctors-grid')">Reset</button>
+              </div>
+            </div>
+
+            <div id="doctors-grid" class="shimmer-grid-parent" data-shimmer-label="Doctors section">
+              <!-- Skeleton -->
+              <div class="shimmer-stage-skeleton">
+                <div class="sk-title-line shimmer w-40" style="margin-bottom: 24px;"></div>
+                <div class="skeleton-grid-cards">
+                  <div class="skeleton-card sk-breath">
+                    <div class="sk-card-image shimmer" style="height: 180px; border-radius: 0;"></div>
+                    <div style="padding: 16px; display: flex; flex-direction: column; gap: 8px;">
+                      <div class="sk-title-line shimmer w-50"></div>
+                      <div class="sk-body-line shimmer w-80"></div>
+                      <div class="sk-button-pill shimmer" style="width: 100px; margin-top: 8px; height: 32px;"></div>
+                    </div>
+                  </div>
+                  <div class="skeleton-card sk-breath">
+                    <div class="sk-card-image shimmer" style="height: 180px; border-radius: 0;"></div>
+                    <div style="padding: 16px; display: flex; flex-direction: column; gap: 8px;">
+                      <div class="sk-title-line shimmer w-60"></div>
+                      <div class="sk-body-line shimmer w-70"></div>
+                      <div class="sk-button-pill shimmer" style="width: 100px; margin-top: 8px; height: 32px;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Content -->
+              <div class="shimmer-stage-content">
+                <h3 style="margin-bottom: 24px; font-weight: 700;">Fertility Specialists</h3>
+                <div class="mock-grid mock-grid-2">
+                  <div class="mock-card" style="padding: 0; overflow: hidden;">
+                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=80" alt="Doctor" style="width: 100%; height: 180px; object-fit: cover;">
+                    <div style="padding: 16px; display: flex; flex-direction: column; gap: 8px;">
+                      <h4 style="font-weight: 700; font-size: 16px;">Dr. Sunita Sharma</h4>
+                      <p style="color: var(--muted-foreground); font-size: 12px;">Reproductive Consultant, 15+ Yrs</p>
+                      <button class="mock-btn mock-btn-outline" style="align-self: flex-start; height: 32px;">Profile</button>
+                    </div>
+                  </div>
+                  <div class="mock-card" style="padding: 0; overflow: hidden;">
+                    <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=400&q=80" alt="Doctor" style="width: 100%; height: 180px; object-fit: cover;">
+                    <div style="padding: 16px; display: flex; flex-direction: column; gap: 8px;">
+                      <h4 style="font-weight: 700; font-size: 16px;">Dr. Raghav Iyer</h4>
+                      <p style="color: var(--muted-foreground); font-size: 12px;">Embryology Lead, 12+ Yrs</p>
+                      <button class="mock-btn mock-btn-outline" style="align-self: flex-start; height: 32px;">Profile</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAGE 5: BLOG / RESOURCES -->
+        <div id="blog-tab" class="tab-content">
+          <div class="preview-card">
+            <div class="preview-header">
+              <h3>Blog / Resources</h3>
+              <div class="preview-actions">
+                <button class="btn-action" onclick="loadItem('blog-grid')">Reveal</button>
+                <button class="btn-action" onclick="resetItem('blog-grid')">Reset</button>
+              </div>
+            </div>
+
+            <div id="blog-grid" class="shimmer-grid-parent" data-shimmer-label="Blog section">
+              <!-- Skeleton -->
+              <div class="shimmer-stage-skeleton">
+                <div class="sk-title-line shimmer w-30" style="margin-bottom: 24px;"></div>
+                <div class="skeleton-grid-cards">
+                  <div class="skeleton-card sk-breath" style="padding: 20px; gap: 12px;">
+                    <div class="sk-card-image shimmer" style="height: 120px; border-radius: 8px;"></div>
+                    <div class="sk-badge shimmer" style="width: 60px;"></div>
+                    <div class="sk-title-line shimmer w-70"></div>
+                    <div class="sk-body-line shimmer w-90"></div>
+                  </div>
+                  <div class="skeleton-card sk-breath" style="padding: 20px; gap: 12px;">
+                    <div class="sk-card-image shimmer" style="height: 120px; border-radius: 8px;"></div>
+                    <div class="sk-badge shimmer" style="width: 80px;"></div>
+                    <div class="sk-title-line shimmer w-60"></div>
+                    <div class="sk-body-line shimmer w-80"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- Content -->
+              <div class="shimmer-stage-content">
+                <h3 style="margin-bottom: 24px; font-weight: 700;">Knowledge Resources</h3>
+                <div class="mock-grid mock-grid-2">
+                  <div class="mock-card" style="padding: 20px; gap: 12px;">
+                    <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=400&q=80" alt="Blog image" style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px;">
+                    <span class="badge badge-secondary" style="align-self: flex-start;">Diet</span>
+                    <h4 style="font-weight: 700; font-size: 15px;">Diet and Conception quality</h4>
+                    <p style="color: var(--muted-foreground); font-size: 12px;">Explore essential nutrition to boost ovulation health.</p>
+                  </div>
+                  <div class="mock-card" style="padding: 20px; gap: 12px;">
+                    <img src="https://images.unsplash.com/photo-1583947215259-38e31be8751f?auto=format&fit=crop&w=400&q=80" alt="Blog image" style="width: 100%; height: 120px; object-fit: cover; border-radius: 8px;">
+                    <span class="badge badge-secondary" style="align-self: flex-start;">IVF</span>
+                    <h4 style="font-weight: 700; font-size: 15px;">Preparing for embryo transfer</h4>
+                    <p style="color: var(--muted-foreground); font-size: 12px;">Steps to prepare physically and emotionally.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PAGE 6: CONTACT US -->
+        <div id="contact-tab" class="tab-content">
+          <div class="preview-card">
+            <div class="preview-header">
+              <h3>Contact Desk</h3>
+              <div class="preview-actions">
+                <button class="btn-action" onclick="loadItem('contact-desk')">Reveal</button>
+                <button class="btn-action" onclick="resetItem('contact-desk')">Reset</button>
+              </div>
+            </div>
+
+            <div id="contact-desk" class="shimmer-grid-parent" data-shimmer-label="Contact section">
+              <!-- Skeleton -->
+              <div class="shimmer-stage-skeleton">
+                <div class="sk-title-line shimmer w-40" style="margin-bottom: 24px;"></div>
+                <div class="skeleton-card sk-breath" style="padding: 24px; gap: 16px;">
+                  <div class="sk-title-line shimmer w-30"></div>
+                  <div class="sk-paragraph">
+                    <div class="sk-body-line shimmer w-full"></div>
+                    <div class="sk-body-line shimmer w-90"></div>
+                    <div class="sk-body-line shimmer w-70"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- Content -->
+              <div class="shimmer-stage-content">
+                <h3 style="margin-bottom: 24px; font-weight: 700;">Support Desk</h3>
+                <div class="mock-card" style="padding: 24px;">
+                  <h4 style="font-weight: 700; margin-bottom: 8px; font-size: 16px;">Get in touch</h4>
+                  <p style="color: var(--muted-foreground); font-size: 14px; line-height: 1.6;">For help or feedback, email us at <a href="mailto:deekshith@janmasethu.com" style="color: var(--primary); text-decoration: underline;">deekshith@janmasethu.com</a>. Our support team is online Monday to Friday, 10 AM to 6 PM IST.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Shimmer system transition script -->
+  <script src="shimmer-effects.js"></script>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    let isSlowNetwork = false;
+
+    // Toggle Slow Network
+    const slowNetBtn = document.getElementById('slow-net-toggle');
+    slowNetBtn.onclick = function() {
+      isSlowNetwork = !isSlowNetwork;
+      slowNetBtn.classList.toggle('active', isSlowNetwork);
+      console.log(`[Demo] Slow network simulation: ${isSlowNetwork ? 'ON (3s delay)' : 'OFF'}`);
+    };
+
+    // Tab switcher
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      
+      const targetBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => btn.innerText.toLowerCase().includes(tabId.split('-')[0]));
+      if (targetBtn) targetBtn.classList.add('active');
+      
+      document.getElementById(tabId).classList.add('active');
+      
+      // Reset items in the tab on visit
+      const parents = document.getElementById(tabId).querySelectorAll('.shimmer-grid-parent');
+      parents.forEach(p => resetItem(p.id));
+    }
+
+    // Trigger reveal section with optional delay
+    function loadItem(itemId) {
+      if (isSlowNetwork) {
+        // Show progress bar crawl
+        ShimmerEffectsSystem.startProgress();
+        setTimeout(() => {
+          ShimmerEffectsSystem.revealSection(itemId);
+        }, 3000);
+      } else {
+        ShimmerEffectsSystem.revealSection(itemId);
+      }
+    }
+
+    // Reset item
+    function resetItem(itemId) {
+      ShimmerEffectsSystem.resetSection(itemId);
+      ShimmerEffectsSystem.initStaggeredEntries();
+    }
+
+    // Interactive sliders hooks linking to CSS variables
+    const cycleSlider = document.getElementById('cycle-slider');
+    const scaleSlider = document.getElementById('scale-slider');
+    const opacitySlider = document.getElementById('opacity-slider');
+    const sectionSlider = document.getElementById('section-slider');
+    const cardSlider = document.getElementById('card-slider');
+    const revealSlider = document.getElementById('reveal-slider');
+
+    cycleSlider.oninput = function() {
+      document.documentElement.style.setProperty('--sweep-cycle', `${this.value}s`);
+      document.getElementById('cycle-val').innerText = `${this.value}s`;
+    };
+
+    scaleSlider.oninput = function() {
+      document.documentElement.style.setProperty('--breathe-scale', this.value);
+      document.getElementById('scale-val').innerText = this.value;
+    };
+
+    opacitySlider.oninput = function() {
+      document.documentElement.style.setProperty('--breathe-opacity', this.value);
+      document.getElementById('opacity-val').innerText = this.value;
+    };
+
+    sectionSlider.oninput = function() {
+      document.documentElement.style.setProperty('--shimmer-stagger-section', `${this.value}ms`);
+      document.getElementById('section-val').innerText = `${this.value}ms`;
+    };
+
+    cardSlider.oninput = function() {
+      document.documentElement.style.setProperty('--shimmer-stagger-card', `${this.value}ms`);
+      document.getElementById('card-val').innerText = `${this.value}ms`;
+    };
+
+    revealSlider.oninput = function() {
+      document.documentElement.style.setProperty('--reveal-duration-content', `${this.value}ms`);
+      document.getElementById('reveal-val').innerText = `${this.value}ms`;
+    };
+
+    document.getElementById('reset-page-btn').onclick = function() {
+      ShimmerEffectsSystem.resetAll();
+    };
+  </script>
+</body>
+</html>

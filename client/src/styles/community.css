@@ -1,0 +1,16 @@
+/* client/src/styles/community.css */
+
+.font-display {
+  font-family: 'Nohemi', sans-serif;
+}
+
+/* Base tailwind covers most styling, but we can add specific custom CSS here */
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

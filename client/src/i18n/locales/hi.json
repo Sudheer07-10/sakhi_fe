@@ -1,0 +1,332 @@
+{
+  "Home_Landing_Page": {
+    "Header": {
+      "nav_home": "होम",
+      "nav_knowledge": "जानकारी",
+      "nav_treatments": "इलाज",
+      "nav_life": "लाइफ स्टेज",
+      "nav_success": "सफलता की कहानियाँ",
+      "nav_blog": "ब्लॉग्स",
+      "nav_experts": "डॉक्टर्स",
+      "nav_tools": "टूल्स",
+      "nav_sakhi": "सखी",
+      "lang_label": "भाषा",
+      "nav_investors": "इन्वेस्टर्स",
+      "nav_more": "और देखें",
+      "nav_less": "कम",
+      "nav_for_clinics": "क्लिनिक के लिए",
+      "chat_with_sakhi": "सखी से बात करें"
+    },
+    "Hero_Section": {
+      "hero_phase1_sub": "हर कदम पर समर्थन",
+      "hero_phase1_main": "आपकी पेरेंटहुड यात्रा का",
+      "hero_phase1_span": "मार्गदर्शन",
+      "hero_phase2_sub": "आपकी यात्रा के दौरान देखभाल",
+      "hero_phase2_main": "हर कदम पर",
+      "hero_phase2_main_2": " ",
+      "hero_phase2_span": "आपके साथ",
+      "hero_phase3_sub": "कोशिश से पालन-पोषण तक",
+      "hero_phase3_main": "सभी चरण।",
+      "hero_phase3_span": "एक स्थान।",
+      "hero_cta_sakhi": "सखी से मिलें",
+      "hero_cta_register": "रजिस्टर करें"
+    },
+    "Who_We_Serve": {
+      "who_title": "हम किसकी मदद करते हैं",
+      "who_body": "भारतीय परिवारों के लिए खास - डॉक्टरी सलाह, मन की बात, पैसों की जानकारी और खाने की चीज़ें। सखी दिन-रात आपके साथ है।"
+    },
+    "Why_Us": {
+      "why_title": "जन्म सेतु क्यों चुनें?",
+      "why_points": "भारत की समझ,आसान भाषा,हर स्टेज की जानकारी,काम की बातें,भरोसेमंद,दिल से केयर,प्राइवेसी",
+      "about_patients_title": "मरीज़",
+      "about_patients_desc": "सरल प्रजनन मार्गदर्शन, भारत-जागरूक और निर्णय-मुक्त।",
+      "about_clinics_title": "क्लिनिक",
+      "about_clinics_desc": "साक्ष्य-आधारित संसाधन रोगी बातचीत के लिए।"
+    },
+    "Parenthood_Journey": {
+      "journey_title": "आपकी संपूर्ण मातृत्व यात्रा",
+      "journey_subtitle": "हर चरण में सखी करुणामय, साक्ष्य-आधारित सहयोग देती है",
+      "journey_cta": "देखें कि सखी कैसे सहायता करती है",
+      "journey_stage_1_title": "मातृत्व की सोच",
+      "journey_stage_1_desc": "पोषण, भावनात्मक तैयारी, वित्तीय योजना",
+      "journey_stage_2_title": "प्राकृतिक कोशिश",
+      "journey_stage_2_desc": "साइकल ट्रैकिंग, जीवनशैली सुझाव",
+      "journey_stage_3_title": "विकल्पों की खोज",
+      "journey_stage_3_desc": "IUI/IVF तैयारी, डॉक्टर से पूछने योग्य प्रश्न",
+      "journey_stage_4_title": "गर्भावस्था",
+      "journey_stage_4_desc": "तिमाही मार्गदर्शन, मिथक बनाम तथ्य",
+      "journey_stage_5_title": "प्रसवोत्तर",
+      "journey_stage_5_desc": "रिकवरी, नवजात देखभाल, मानसिक स्वास्थ्य",
+      "journey_stage_tooltip": "इस चरण के बारे में और जानने के लिए क्लिक करें"
+    },
+    "Start_Here": {
+      "orient_title": "यहाँ से शुरू करें",
+      "orient_ttc": "गर्भधारण की योजना (TTC)",
+      "orient_preg": "गर्भावस्था",
+      "orient_parent": "नए माता-पिता",
+      "orient_desc_ttc": "बेसिक्स, जाँच, समय, लागत",
+      "orient_desc_preg": "ट्राइमेस्टर हब",
+      "orient_desc_parent": "खुराक, नींद, कागज़ात"
+    },
+    "Explore_By_Lens": {
+      "lens_title": "दृष्टिकोण से देखें",
+      "lens_medical": "चिकित्सकीय",
+      "lens_social": "सामाजिक-भावनात्मक",
+      "lens_financial": "वित्तीय",
+      "lens_nutrition": "पोषण"
+    },
+    "Editors_Picks": {
+      "featured_title": "हमारी पसंद"
+    },
+    "Treatments_Overview": {
+      "treatments_overview_title": "इलाज की जानकारी"
+    },
+    "Success_Stories": {
+      "success_preview_title": "खुशी की कहानियाँ",
+      "success_preview_description": "देश भर की माँओं की सच्ची कहानियाँ जिन्होंने अपना सपना पूरा किया। हर कहानी अलग है, लेकिन उम्मीद और हिम्मत सबमें एक जैसी है।",
+      "share_story_button": "अपनी कहानी साझा करें"
+    },
+    "Blog_Preview": {
+      "blog_preview_title": "ब्लॉग से"
+    },
+    "Provider_Teaser": {
+      "provider_teaser_title": "क्या आप एक प्रजनन विशेषज्ञ हैं?",
+      "provider_teaser_desc": "अपने अभ्यास को बढ़ाने और अपने रोगियों को बेहतर समर्थन देने के लिए जन्म सेतु के साथ भागीदार बनें।",
+      "provider_teaser_cta": "क्लिनिक के लिए"
+    },
+    "Footer": {
+      "brand_tag": "आपका मां बनने का सफर यहाँ से शुरू होता है",
+      "footer_professional": "पेशेवरों के लिए",
+      "footer_portal": "क्लिनिक पोर्टल",
+      "footer_sources": "स्रोत व समीक्षा नीति",
+      "footer_disclaimer": "चिकित्सकीय सलाह नहीं",
+      "footer_privacy": "गोपनीयता",
+      "footer_contact": "संपर्क"
+    }
+  },
+  "Sakhi_Landing_Page": {
+    "Hero": {
+      "sakhi_hero": "प्रजनन यात्रा के लिए सहृदय साथी",
+      "sakhi_sub": "24/7 भावनात्मक सहयोग — निजी",
+      "sakhi_try": "सखी आज़माएँ"
+    },
+    "How_It_Works": {
+      "sakhi_how_title": "सखी कैसे मदद करती है",
+      "sakhi_how_list": "कठिन क्षणों में आपकी भावनात्मक स्थिति को समझना|चिंता और तनाव के लिए मुकाबला रणनीतियां प्रदान करना|सांस्कृतिक रूप से उपयुक्त मार्गदर्शन देना|जटिल भावनाओं को संसाधित करने में सहायता करना|प्रतीक्षा अवधि के दौरान सहायता करना|साथी संवाद में सहायता करना|भारी क्षणों के दौरान दृष्टिकोण प्रदान करना",
+      "sakhi_step1": "अंग्रेजी, हिंदी या तेलुगू में अपना संदेश टाइप करें",
+      "sakhi_step2": "सखी आपकी भाषा को स्वचालित रूप से पहचान लेती है",
+      "sakhi_step3": "दयालु, सांस्कृतिक रूप से जागरूक सहारा प्राप्त करें"
+    },
+    "Specific_Ways": {
+      "sakhi_specific_ways": "सखी आपकी सहायता के विशिष्ट तरीके",
+      "sakhi_ways_a5_title": "पोस्ट केयर सपोर्ट (Post care support)",
+      "sakhi_ways_a5_sub": "रिकवरी",
+      "sakhi_ways_a5_e1": "शारीरिक रिकवरी मार्गदर्शन",
+      "sakhi_ways_a5_e2": "मानसिक स्वास्थ्य चेक-इन",
+      "sakhi_ways_a5_e3": "नवजात देखभाल के सुझाव"
+    },
+    "Interactive_Demo": {
+      "sakhi_try_demo_title": "सखी आजमाएं - इंटरैक्टिव डेमो",
+      "sakhi_try_demo_subtitle": "अपनी प्रजनन यात्रा के लिए दयालु, सांस्कृतिक रूप से जागरूक सहायता का अनुभव करें। किसी भी भाषा में टाइप करें और सखी तदनुसार जवाब देगी।",
+      "sakhi_scenarios_title": "ये परिस्थितियां आजमाएं",
+      "sakhi_scenario_anxiety_title": "स्कैन से पहले की चिंता",
+      "sakhi_scenario_anxiety_desc": "चिकित्सा अपॉइंटमेंट से पहले सहारा पाएं",
+      "sakhi_scenario_wait_title": "दो सप्ताह का इंतज़ार",
+      "sakhi_scenario_wait_desc": "प्रतीक्षा अवधि के दौरान उम्मीद और चिंता को संभालें",
+      "sakhi_scenario_partner_title": "साथी सहारा",
+      "sakhi_scenario_partner_desc": "निदान भावनाओं से निपटने वाले साझीदारों के लिए मदद",
+      "sakhi_try_welcome": "सखी में आपका स्वागत है",
+      "sakhi_try_intro": "मैं आपकी प्रजनन यात्रा के लिए दयालु सहायता प्रदान करने के लिए यहाँ हूँ। किसी भी भाषा में टाइप करें - मैं उसी भाषा में जवाब दूंगी।",
+      "sakhi_try_ask_about": "इनके बारे में पूछें:",
+      "sakhi_try_start_conversation": "बातचीत शुरू करें",
+      "sakhi_try_preview_desc": "सखी को संदेश भेजें और व्यक्तिगत सहायता सामग्री, सुझाव और संसाधन यहाँ देखें।",
+      "sakhi_try_private_secure": "निजी और सुरक्षित",
+      "sakhi_try_partner_support": "साथी सहायता",
+      "sakhi_try_multilanguage": "बहुभाषी",
+      "chat_title": "सखी — बातचीत (डेमो)",
+      "chat_hint": "English/हिंदी/తెలుగు — जिस लिपि में लिखेंगे, उसी में उत्तर।",
+      "chat_quick": "त्वरित संकेत",
+      "chat_p1": "क्या उम्र वाकई हमारी संभावनाओं को प्रभावित करती है?",
+      "chat_p2": "गर्भावस्था के दौरान स्वस्थ दिनचर्या",
+      "chat_p3": "मुझे IVF यात्रा समझाएं",
+      "chat_end": "समाप्त",
+      "chat_clear": "साफ़ करें",
+      "chat_privacy": "निजी व स्थानीय।"
+    },
+    "Trust": {
+      "sakhi_private_local": "निजी और स्थानीय",
+      "sakhi_private_local_desc": "सभी बातचीत आपके डिवाइस पर रहती है",
+      "sakhi_multilang_short": "बहुभाषी",
+      "sakhi_multilang_short_desc": "अंग्रेजी, हिंदी या तेलुगू में जवाब देता है",
+      "sakhi_247_available": "24/7 उपलब्ध",
+      "sakhi_247_available_desc": "जब भी आपको जरूरत हो, दिन हो या रात",
+      "sakhi_privacy_first": "गोपनीयता पहले",
+      "sakhi_no_account": "कोई खाता आवश्यक नहीं, कोई डेटा एकत्र नहीं, पूर्णतया गुमनाम।"
+    },
+    "Important_Notice": {
+      "sakhi_help_notice_title": "महत्वपूर्ण: कब लें पेशेवर मदद",
+      "sakhi_help_notice_desc": "सखी भावनात्मक सहारा और मुकाबला रणनीति प्रदान करती है, लेकिन पेशेवर चिकित्सा या मानसिक स्वास्थ्य देखभाल की जगह नहीं ले सकती।",
+      "sakhi_help_contact": "कृपया तुरंत स्वास्थ्य देखभाल पेशेवर या आपातकालीन सेवाओं से संपर्क करें यदि आप अनुभव करते हैं:",
+      "sakhi_help_bullets_1": "आत्म-हानि या आत्महत्या के विचार",
+      "sakhi_help_bullets_2": "गंभीर अवसाद या चिंता जो दैनिक जीवन में बाधा डालती है",
+      "sakhi_help_bullets_3": "पैनिक अटैक या अत्यधिक परेशानी",
+      "sakhi_help_bullets_4": "कोई भी मेडिकल लक्षण या चिंता",
+      "sakhi_important_notice": "महत्वपूर्ण नोटिस",
+      "sakhi_important_desc": "सखी भावनात्मक सहारा और सामान्य मार्गदर्शन प्रदान करती है लेकिन पेशेवर चिकित्सा या मानसिक स्वास्थ्य देखभाल की जगह नहीं है। यदि आप आत्म-नुकसान के विचारों या गंभीर संकट का अनुभव कर रहे हैं, तो कृपया तुरंत स्वास्थ्य देखभाल पेशेवर या आपातकालीन सेवाओं से संपर्क करें।"
+    },
+    "Continue_Journey": {
+      "sakhi_continue_journey": "अपनी यात्रा जारी रखें",
+      "sakhi_continue_desc": "प्रजनन, गर्भावस्था और पालन-पोषण पर साक्ष्य-आधारित जानकारी के लिए हमारे व्यापक ज्ञान केंद्र को देखें।",
+      "sakhi_explore_knowledge": "नॉलेज हब एक्सप्लोर करें",
+      "sakhi_learn_treatments": "उपचारों के बारे में जानें"
+    }
+  },
+  "Clinic_Portal": {
+    "Hero": {
+      "clinic_hero_title": "अपने <span class='text-primary'>क्लिनिक का विकास</span> परिवर्तन करें",
+      "clinic_hero_desc": "आधुनिक प्रजनन क्लीनिकों के लिए डिज़ाइन किया गया बुद्धिमान CRM और रोगी सहायता प्लेटफ़ॉर्म।",
+      "clinic_hero_cta": "हमारे साथ भागीदार बनें",
+      "clinic_login_cta": "पोर्टल लॉगिन"
+    }
+  },
+  "Knowledge_Hub": {
+    "knowledge_hub_subtitle": "प्रजनन क्षमता, गर्भावस्था और पालन-पोषण पर विशेषज्ञ-समीक्षित मार्गदर्शिकाएँ — आपकी ज़रूरत के अनुसार चरण और दृष्टिकोण द्वारा व्यवस्थित।",
+    "rights_title": "अधिकार व योजनाएँ ( भारत)",
+    "nutrition_title": "पोषण आवश्यकताएँ",
+    "nutrition_eat": "खाएँ",
+    "nutrition_limit": "कम करें",
+    "nutrition_avoid": "परहेज़",
+    "treatment_iui_title": "IUI",
+    "treatment_iui_desc": "अंतर्गर्भाशयी गर्भाधान प्रक्रिया, सफलता दर और क्या अपेक्षा करें",
+    "treatment_ivf_title": "IVF",
+    "treatment_ivf_desc": "इन विट्रो फर्टिलाइजेशन चरण, समयसीमा और तैयारी गाइड",
+    "treatment_icsi_title": "ICSI",
+    "treatment_icsi_desc": "पुरुष कारक बांझपन के लिए अंडे में शुक्राणु इंजेक्शन",
+    "treatment_donor_title": "दाता विकल्प",
+    "treatment_donor_desc": "अंडा, शुक्राणु और भ्रूण दान प्रक्रियाएं और विचार",
+    "treatment_preservation_title": "प्रजनन संरक्षण",
+    "treatment_preservation_desc": "भविष्य की पारिवारिक योजना के लिए अंडा और शुक्राणु संरक्षण"
+  },
+  "General": {
+    "Blog": {
+      "blog_subtitle": "हमारी संपादकीय टीम और विशेषज्ञ योगदानकर्ताओं से अंतर्दृष्टि, सुझाव और व्यावहारिक सलाह। प्रजनन, गर्भावस्था और पालन-पोषण में नवीनतम से अपडेट रहें।",
+      "blog_featured_post": "फीचर्ड पोस्ट",
+      "blog_all_posts": "सभी पोस्ट",
+      "blog_stay_updated": "अपडेट रहें",
+      "blog_updates_desc": "नवीनतम लेख, गाइड और अंतर्दृष्टि अपने इनबॉक्स में प्राप्त करें। कोई स्पैम नहीं, केवल आपकी पालन-पोषण यात्रा के लिए उपयोगी सामग्री।",
+      "blog_get_updates": "अपडेट प्राप्त करें",
+      "blog_edited_by": "संपादित किया गया"
+    },
+    "Experts": {
+      "experts_subtitle": "उन चिकित्सा पेशेवरों, विशेषज्ञों और सलाहकारों से मिलें जो हमारी सामग्री की समीक्षा करते हैं ताकि भारतीय परिवारों के लिए सटीकता और प्रासंगिकता सुनिश्चित की जा सके।",
+      "experts_reviews": "समीक्षाएं:",
+      "experts_quality_trust": "भरोसेमंद गुणवत्ता",
+      "experts_trust_desc": "हमारी सभी सामग्री योग्य पेशेवरों द्वारा समीक्षित होती है ताकि सटीकता और प्रासंगिकता सुनिश्चित की जा सके। हालांकि, यह जानकारी केवल शैक्षिक उद्देश्यों के लिए है और पेशेवर चिकित्सा सलाह की जगह नहीं लेनी चाहिए।",
+      "experts_browse_knowledge": "नॉलेज हब ब्राउज़ करें",
+      "experts_contact_us": "हमसे संपर्क करें"
+    },
+    "Stories": {
+      "share_story_title": "अपनी कहानी बताएं",
+      "share_story_description": "आपकी कहानी दूसरी माँओं को हिम्मत दे सकती है। अपना एक्सपीरियंस शेयर करें और दूसरों को उम्मीद दें।"
+    },
+    "Investors": {
+      "investors_hero_title": "निवेश करें भविष्य में",
+      "investors_hero_title_highlight": "पेरेंटहुड केयर",
+      "investors_hero_mission": "भारतीय परिवारों के लिए प्रजनन यात्रा को बदलने हेतु स्वास्थ्य सेवा में विश्वास, तैयारी और AI को जोड़ना।",
+      "investors_hero_download_deck": "निवेशक डेक डाउनलोड करें",
+      "investors_problem_title": "समस्या",
+      "investors_problem_1": "माता-पिता को प्रजनन उपचार के बारे में बिखरी, अप्रमाणित जानकारी से परेशानी",
+      "investors_problem_2": "क्लिनिक रद्दीकरण और खराब तैयारी के कारण मरीज़ खो देते हैं",
+      "investors_problem_3": "मौजूदा हेल्थ टेक केवल लीड जेनरेशन पर फोकस करता है, विश्वास-प्राथमिक दृष्टिकोण पर नहीं",
+      "investors_solution_title": "हमारा समाधान",
+      "investors_solution_1": "क्यूरेटेड बहुभाषी ज्ञान केंद्र",
+      "investors_solution_1_desc": "सत्यापित, सांस्कृतिक रूप से जागरूक सामग्री के साथ",
+      "investors_solution_2": "सखी साथी ऐप",
+      "investors_solution_2_desc": "24/7 भावनात्मक सहायता प्रदान करता है",
+      "investors_solution_3": "क्लिनिक पोर्टल",
+      "investors_solution_3_desc": "जो रद्दीकरण कम करता है और शो-रेट बेहतर बनाता है",
+      "investors_traction_title": "प्रारंभिक कर्षण और गति",
+      "investors_traction_subtitle": "पहले दिन से विश्वास और पैमाना निर्माण",
+      "investors_traction_languages": "3 भाषाएं",
+      "investors_traction_languages_desc": "अंग्रेजी, हिंदी और तेलुगू में IVF ज्ञान केंद्र लॉन्च किया",
+      "investors_traction_faqs": "100+ प्रश्न",
+      "investors_traction_faqs_desc": "व्यापक चेकलिस्ट और सत्यापित सामग्री प्लेटफॉर्म पर उपलब्ध",
+      "investors_traction_pilot": "पायलट पार्टनर",
+      "investors_traction_pilot_desc": "सामनाडा क्लिनिक के साथ परिणाम-आधारित मॉडल जो प्रारंभिक परिणाम दिखा रहा है",
+      "investors_model_title": "स्केलेबल बिजनेस मॉडल",
+      "investors_model_subtitle": "परिणाम-संचालित दृष्टिकोण जो हमारी सफलता को क्लिनिक सफलता के साथ जोड़ता है",
+      "investors_model_phase1_title": "चरण 1: पायलट",
+      "investors_model_phase1_desc": "चुनिंदा क्लिनिकों के साथ परिणाम-आधारित मॉडल",
+      "investors_model_phase1_1": "बेहतर परिणामों पर राजस्व साझाकरण",
+      "investors_model_phase1_2": "कम रद्दीकरण दरें",
+      "investors_model_phase1_3": "उच्च रोगी संतुष्टि",
+      "investors_model_phase2_title": "चरण 2: स्केल",
+      "investors_model_phase2_desc": "सब्सक्रिप्शन + प्रति-सक्रिय रोगी शुल्क",
+      "investors_model_phase2_1": "मासिक प्लेटफॉर्म सब्सक्रिप्शन",
+      "investors_model_phase2_2": "उपयोग-आधारित रोगी सहभागिता शुल्क",
+      "investors_model_phase2_3": "प्रीमियम सुविधाएं और एनालिटिक्स",
+      "investors_model_phase3_title": "चरण 3: विस्तार",
+      "investors_model_phase3_desc": "विशेषता-अज्ञेयवादी प्लेटफॉर्म",
+      "investors_model_phase3_1": "IVF, IUI, एंडोमेट्रियोसिस कवरेज",
+      "investors_model_phase3_2": "गर्भावस्था और प्रारंभिक पेरेंटिंग",
+      "investors_model_phase3_3": "अस्पताल चेन के लिए एंटरप्राइज लाइसेंसिंग",
+      "investors_why_title": "क्यों जन्म सेतु?",
+      "investors_why_subtitle": "टिकाऊ प्रतिस्पर्धी लाभ का निर्माण",
+      "investors_moat_title": "हमारी खाई",
+      "investors_moat_data_title": "डेटा संपत्ति",
+      "investors_moat_data_desc": "रोगी प्रश्न, FAQ अंतराल और सांस्कृतिक अंतर्दृष्टि का अनूठा डेटासेट जो समय के साथ बढ़ता है",
+      "investors_moat_clinician_title": "चिकित्सक नेटवर्क",
+      "investors_moat_clinician_desc": "विश्वसनीय समीक्षक और चिकित्सा पेशेवर विश्वसनीयता और सटीकता सुनिश्चित करते हैं",
+      "investors_moat_multilingual_title": "पहले दिन से बहुभाषी",
+      "investors_moat_multilingual_desc": "गहरी सांस्कृतिक समझ और भाषा सहायता जिसे दोहराना कठिन है",
+      "investors_team_title": "हमारी टीम",
+      "investors_team_desc": "छोटी, केंद्रित, बहु-अनुशासनात्मक टीम जो स्वास्थ्य विशेषज्ञता को तकनीकी उत्कृष्टता के साथ मिलाती है।",
+      "investors_team_healthcare": "स्वास्थ्य डोमेन विशेषज्ञ",
+      "investors_team_engineers": "फुल-स्टैक इंजीनियर",
+      "investors_team_ai": "AI/ML विशेषज्ञ",
+      "investors_team_medical": "चिकित्सा सामग्री समीक्षक",
+      "investors_cta_title": "स्वास्थ्य सेवा को एक साथ बदलने के लिए तैयार हैं?",
+      "investors_cta_subtitle": "लाखों भारतीय परिवारों के लिए पेरेंटहुड केयर के भविष्य के निर्माण में हमारे साथ जुड़ें।",
+      "investors_cta_onepager": "1-पेजर डाउनलोड करें",
+      "investors_cta_contact": "संपर्क करें",
+      "investors_cta_schedule": "कॉल शेड्यूल करें",
+      "investors_disclaimer": "यह जानकारी गोपनीय और मालिकाना है। सभी भविष्य की घोषणाएं जोखिम और अनिश्चितताओं के अधीन हैं।"
+    },
+    "Misc": {
+      "search_placeholder": "लेख, उपचार खोजें...",
+      "coming_soon": "जल्द आ रहा है",
+      "read_more": "और पढ़ें",
+      "learn_more": "और जानें",
+      "get_started": "शुरू करें",
+      "explore_more": "और अन्वेषण करें",
+      "support_title": "अतिरिक्त सहायता की आवश्यकता है?",
+      "support_subtitle": "अपनी यात्रा के दौरान व्यक्तिगत मार्गदर्शन और भावनात्मक समर्थन प्राप्त करें",
+      "talk_sakhi_button": "सखी से बात करें",
+      "find_experts_button": "विशेषज्ञ खोजें",
+      "alt_planning_fertility": "प्रजनन यात्रा की योजना और ट्रैकिंग",
+      "alt_reading_parenting": "पेरेंटिंग के बारे में पढ़ना और सीखना",
+      "alt_medical_consultation": "स्वास्थ्य पेशेवरों के साथ चिकित्सा परामर्श",
+      "chat_reply_en": "I'm glad you shared this. It's normal to feel anxious. Try 4-4-6 breathing (in 4, hold 4, out 6) three times. Then pick one small step you control. If you notice chest pain, dizziness, or thoughts of self-harm, please contact professional or emergency care.",
+      "chat_reply_hi": "आपने साझा किया, धन्यवाद। घबराहट सामान्य है। 4-4-6 साँस (4 अंदर, 4 रोकें, 6 बाहर) तीन बार करें। फिर अपने नियंत्रण में एक छोटा कदम चुनें। यदि सीने में दर्द/चक्कर/आत्म-हानि के विचार हों तो तुरंत मदद लें।",
+      "chat_reply_te": "మీరు పంచుకున్నందుకు ధన్యవాదాలు. ఆందోళన సహజం. 4-4-6 శ్వాస (4 లోపల, 4 ఆపి, 6 బయట) మూడు సార్లు చేయండి. తర్వాత మీరు నియంత్రించగల చిన్న మెట్టు ఎంచుకోండి. ఛాతి నొప్పి/తల తిరుగుడు/స్వీయహానీ ఆలోచనలు ఉంటే సహాయం పొందండి.",
+      "sakhi_online_ready": "सखी ऑनलाइन है और मदद के लिए तैयार है",
+      "chat_feeling_anxious": "मैं कल के स्कैन को लेकर चिंतित हूं",
+      "chat_understand_anxiety": "मैं आपकी चिंता समझती हूं। स्कैन से पहले ऐसा महसूस करना पूरी तरह सामान्य है।",
+      "chat_breathing_exercise": "कुछ गहरी सांस लेने के व्यायाम करें...",
+      "chat_type_message": "अपना संदेश टाइप करें...",
+      "chat_send_message": "संदेश भेजें"
+    },
+    "SEO": {
+      "seo_home_title": "जन्म सेतु",
+      "seo_home_desc": "अंग्रेजी, हिंदी और तेलुगु में भरोसेमंद प्रजनन मार्गदर्शन, गर्भावस्था उपकरण और विशेषज्ञ सहायता। माता-पिता बनने के लिए आपके एआई साथी, सखी से मिलें।",
+      "seo_tools_title": "गर्भावस्था और प्रजनन उपकरण — जन्म सेतु",
+      "seo_tools_desc": "ओव्यूलेशन कैलकुलेटर, ड्यू डेट कैलकुलेटर, गर्भावस्था ट्रैकर, टीकाकरण शेड्यूलर और बहुत कुछ। आपकी पितृत्व यात्रा के लिए निःशुल्क उपकरण।",
+      "seo_sakhi_title": "सखी — प्रजनन और गर्भावस्था के लिए आपका एआई साथी | जन्म सेतु",
+      "seo_sakhi_desc": "सखी के साथ चैट करें, आपकी दयालु एआई साथी जो आपकी प्रजनन यात्रा को समझती है और आपकी भाषा में सांस्कृतिक रूप से जागरूक सहायता प्रदान करती है।",
+      "seo_knowledge_title": "नॉलेज हब — जन्म सेतु",
+      "seo_knowledge_desc": "अंग्रेजी, हिंदी और तेलुगु में डॉक्टर-सत्यापित प्रजनन और गर्भावस्था लेख। आपकी पितृत्व यात्रा के लिए भरोसेमंद जानकारी।",
+      "seo_stories_title": "सफलता की कहानियां — जन्म सेतु",
+      "seo_stories_desc": "भारतीय परिवारों की सच्ची कहानियाँ जिन्होंने प्रजनन चुनौतियों का सामना किया। अपनी यात्रा के लिए आशा और प्रेरणा खोजें।"
+    }
+  }
+}

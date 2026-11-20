@@ -1,0 +1,253 @@
+/**
+ * JANMASETHU SHIMMER LOADING EFFECT SYSTEM
+ * Production-ready, color-agnostic, layout-accurate skeletons.
+ * No hardcoded hex, rgb, or color names.
+ */
+
+:root {
+  /* Design system tokens mapping to theme colors to stay fully color-agnostic - resolved without nested hsl() */
+  --shimmer-base: var(--border, hsl(173, 13%, 91%));
+  --shimmer-highlight: var(--card, hsl(0, 0%, 100%));
+  --shimmer-radius: var(--radius, 1.5rem);
+  --shimmer-duration: 1.5s;
+}
+
+/* ==========================================================================
+   1. Animation Definitions & Core Classes
+   ========================================================================== */
+
+@keyframes shimmer-sweep {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes shimmer-pulse {
+  0%, 100% {
+    opacity: 0.65;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Driving shimmer animation class applied to all skeleton pieces */
+.shimmer {
+  background-image: linear-gradient(
+    90deg,
+    var(--shimmer-base) 25%,
+    var(--shimmer-highlight) 50%,
+    var(--shimmer-base) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer-sweep var(--shimmer-duration, 1.5s) infinite linear;
+}
+
+/* Accessibility: simple static pulse if reduced motion is requested */
+@media (prefers-reduced-motion: reduce) {
+  .shimmer {
+    background-image: none !important;
+    background-color: var(--shimmer-base) !important;
+    animation: shimmer-pulse var(--shimmer-duration, 1.5s) infinite ease-in-out !important;
+  }
+}
+
+/* ==========================================================================
+   2. Individual Skeleton Shapes (Prefix: sk-)
+   ========================================================================== */
+
+/* Tall block for headings */
+.sk-title-line {
+  height: 22px;
+  width: 65%;
+  border-radius: calc(var(--shimmer-radius) * 0.4);
+  display: block;
+}
+
+.sk-title-line.h-xl {
+  height: 36px;
+}
+
+.sk-title-line.w-40 { width: 40%; }
+.sk-title-line.w-50 { width: 50%; }
+.sk-title-line.w-60 { width: 60%; }
+.sk-title-line.w-70 { width: 70%; }
+.sk-title-line.w-80 { width: 80%; }
+
+/* Short block for standard text lines */
+.sk-body-line {
+  height: 13px;
+  width: 90%;
+  border-radius: calc(var(--shimmer-radius) * 0.3);
+  display: block;
+}
+
+/* Custom text widths to prevent same-width repetition in body blocks */
+.sk-body-line.w-full  { width: 100%; }
+.sk-body-line.w-90    { width: 90%; }
+.sk-body-line.w-85    { width: 85%; }
+.sk-body-line.w-80    { width: 80%; }
+.sk-body-line.w-75    { width: 75%; }
+.sk-body-line.w-70    { width: 70%; }
+.sk-body-line.w-65    { width: 65%; }
+.sk-body-line.w-60    { width: 60%; }
+.sk-body-line.w-50    { width: 50%; }
+.sk-body-line.w-40    { width: 40%; }
+.sk-body-line.w-30    { width: 30%; }
+
+/* Paragraph wrapper to bundle varying line widths */
+.sk-paragraph {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Perfect circle for avatars and icons */
+.sk-avatar,
+.sk-icon {
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  display: block;
+}
+
+/* Button pill with rounded edges */
+.sk-button-pill {
+  height: 38px;
+  width: 120px;
+  border-radius: 9999px;
+  display: block;
+}
+
+/* Badge/Tag small pill */
+.sk-badge,
+.sk-tag {
+  height: 24px;
+  width: 70px;
+  border-radius: 9999px;
+  display: block;
+}
+
+/* Card images */
+.sk-card-image {
+  border-radius: calc(var(--shimmer-radius) * 0.5);
+  width: 100%;
+  display: block;
+}
+
+/* Separator divider line */
+.sk-divider {
+  height: 1px;
+  width: 100%;
+  background-color: var(--shimmer-base);
+  border: none;
+  display: block;
+}
+
+/* Star ratings mimicking 5 equal stars */
+.sk-star-rating {
+  display: flex;
+  gap: 4px;
+}
+.sk-star-rating .sk-star {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: block;
+}
+
+/* ==========================================================================
+   3. Card Wrappers and Structural Skeletons (Prefix: skeleton-)
+   ========================================================================== */
+
+/* Outer grid and layout elements to replicate actual pages */
+.skeleton-container {
+  width: 100%;
+}
+
+/* Faint borders matching the website UI templates */
+.skeleton-card {
+  border-radius: var(--shimmer-radius);
+  border: 1px solid var(--shimmer-base);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Layout structural grids */
+.skeleton-grid-tools {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.skeleton-grid-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+/* Desktop and Tablet Responsive Overrides matching Janmasethu templates */
+@media (min-width: 640px) {
+  .skeleton-grid-tools {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .skeleton-grid-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .skeleton-grid-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ==========================================================================
+   4. Transition and Layout Shift Systems
+   ========================================================================== */
+
+/* Zero Layout Shift Grid Layering */
+.shimmer-grid-parent {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  width: 100%;
+}
+
+.shimmer-stage-skeleton,
+.shimmer-stage-content {
+  grid-area: 1 / 1 / 2 / 2;
+  transition: opacity 350ms ease-in-out;
+  width: 100%;
+}
+
+/* Initial States */
+.shimmer-stage-skeleton {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.shimmer-stage-content {
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Loading Completed State */
+.shimmer-stage-skeleton.loaded {
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.shimmer-stage-content.loaded {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 2;
+}
